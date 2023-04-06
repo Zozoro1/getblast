@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" >
+<head >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>データリスト</title>
+    <style>
+       body{
+        width: 1250px;
+        margin: 0 auto;
+        text-align: center;
+       } 
+       th,td {
+        text-align: center;
+        line-height: 40px;
+        width: 250px;
+        border-bottom: 2px solid black;
+        border-right: 2px solid black;
+        border-left: none;
+       }
+       table {
+        border: 2px solid black;
+        margin: 0 auto;
+       }
+       th{
+        background-color: rgb(61, 224, 46);
+       }
+       td{
+        background-color: rgb(176, 250, 169);
+       }
+       th:last-child,td:last-child{
+        border-right: none;
+       }
+       .btn {
+            
+            height: 35px;
+            width: 300px;
+            margin-top: 50px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color:  #ffb03b;
+        }
+        .btn:hover{
+            opacity: 0.9;
+        }
+        .btn-box{
+            display: flex;
+            justify-content: center;
+            
+        }
+        
+    </style>
+</head >
+<body >
+  <h1 class="title">ユーザーのデータ</h1>
+<form th:action="@{/DataList}" method="POST">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>氏名</th>
+            <th>ビザ期限</th>
+            <th>残り日数</th>
+            
+        </tr>
+        <tr th:each="a : ${a}">
+            <td><span th:text="${a.id}"></span></td> 
+            <td><span th:text="${a.name}"></span></td>
+            <td><span th:text="${a.day}"></span></td>
+            <td><span th:text="${a.remaining}"></span></td>
+            
+        </tr>
+    </table>
+</form>
+<div class="btn-box">
+    <form th:action="@{/home}" method="POST">
+        
+            <button type="submit" class="btn" > 
+                ホームページ戻す
+               </button>
+    </form>
+</div>
+
+</body >
+</html >

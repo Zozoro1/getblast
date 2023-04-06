@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページ</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 16px;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: whitesmoke;
+            color: #444444;
+        }
+        
+        main {
+            width: 400px;
+            height: 350px;
+            margin: 4% auto 0;
+            text-align: center;
+            border: 1px solid black;
+            padding-top: 20px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        h1{
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        .btn {
+            font-size: 1.2rem;
+            font-weight: 450;
+            height: 45px;
+            width: 300px;
+            margin-top: 50px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+            background-color:  #ffb03b;
+        }
+        .btn:hover{
+            opacity: 0.9;
+        }
+        #notify{
+	text-align:center;
+	color:green;
+	font-weight:strong;
+}
+    </style>
+</head>
+<body>
+<div th:if="${msg}">
+  <h1 id="notify" th:text="${msg}"></h1>
+</div>
+    <main>
+        <h1>私のページよこそへ！</h1>
+        <form th:action="@{/DataInput}" method="POST">
+            <button class="btn" type="submit">
+                ビザ期限記入する方こちら
+            </button>
+        </form>
+        <form th:action="@{/GoToAdminLogin}" method="POST">
+            <button class="btn" type="submit">
+                管理者ログイン
+            </button>
+        </form>
+    </main>
+</body>
+</html>

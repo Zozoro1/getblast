@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.UserMapper">
+
+    <insert id="insert" parameterType="com.example.model.UserModel" useGeneratedKeys="true" keyProperty="id">
+ 
+        INSERT INTO  mp_auth.hkc2 (name,day,remaining) 
+        VALUES (#{name},#{day},#{remaining})
+    </insert>
+    
+    <select id="checkAccount" resultType="com.example.model.UserModel"  parameterType = "com.example.model.UserModel">
+        	SELECT name FROM mp_auth.hkc2 WHERE name = #{name} ; 
+    </select>
+    
+<select id="takeData" resultType="com.example.model.UserModel"  parameterType = "com.example.model.UserModel">
+        	SELECT * FROM mp_auth.hkc2 ;	
+    </select>
+
+</mapper>
